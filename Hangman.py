@@ -4,6 +4,56 @@ import random
 word_bank = ['Brigham', 'Young', 'University',
              'Aliens', 'Upsidedown', 'Baseball',
              'Georgia', 'Easy', 'Ten', 'Baseball']
+HANGMAN = ['''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
 
 
 def greeting():  # Greet the user welcoming them to the game.
@@ -30,28 +80,30 @@ def letter_guess(wrd, guessed_letters, word_display, wrong_words, counter, right
 
     if player_guess.lower() in guessed_letters:
         print('You have already guessed this letter!')
+        print(word_display)
         print(f'Your wrong guesses are {wrong_words}')
         print(f'You have guessed {counter} time(s). With {right_counter} right guesses and {wrong_counter} wrong guesses.')
 
     elif player_guess.lower() in wrd.lower():
         guessed_letters.append(player_guess.lower())
         print('You guessed correctly! ')
+        print(word_display)
         print(f'You have guessed {counter} time(s). With {right_counter} right guesses and {wrong_counter} wrong guesses.')
 
     else:
         guessed_letters.append(player_guess.lower())
         wrong_words.append(player_guess)
         print(f'Sorry, {player_guess} is not in the word.')
+        print(word_display)
         print(f'Your wrong guesses are {wrong_words}')
         print(f'You have guessed {counter} time(s). With {right_counter} right guesses and {wrong_counter} wrong guesses.')
 
-    print(word_display)
     print('---------------------------------')
     return word_display
 
 def game_end():
     user_input = input('Would you like to play again? (y/n): ')
-    
+
     if user_input.lower() in ['y', 'yes']:
         print('|')  # Add some space between games.
         print('|')
@@ -77,9 +129,16 @@ def main_play():  # combine functions into one main gameplay.
     counter = 1
     right_counter = 0
     wrong_counter = 0
+    i = 1
 
     while True:
         player_guess = input('Please guess a letter: ')
+        if player_guess.lower() not in word.lower():
+            print(HANGMAN[i])
+            i += 1
+            if i >= len(HANGMAN):
+                print(f'You took too many guesses. GAME OVER.')
+                break
         if player_guess.lower() in word.lower():
             right_counter += 1
 
@@ -95,6 +154,11 @@ def main_play():  # combine functions into one main gameplay.
 
 
 main_play()
+
+
+
+
+
 
 
 
