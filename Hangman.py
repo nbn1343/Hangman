@@ -22,7 +22,7 @@ gallows = ["  ,---<\n  |   |\n      |\n      |\n      |\n      |\n<=========>",
 def greeting():  # Greet the user welcoming them to the game.
     print('Hello player! Welcome to Hangman.')
     print(gallows[0])
-    print('---------------------------------')
+    print('---------------------------------') # used throughout code to provide separation.
 
 
 def word_select(word):  # Select a random word from the word bank.
@@ -33,29 +33,29 @@ def word_select(word):  # Select a random word from the word bank.
 def inform_player(wrd):  # Indicate to the player how many letters are in the word.
     ln_wrd = len(wrd)
     print(f'There are {ln_wrd} letters in the word.')
-    print('---------------------------------')
+    print('---------------------------------') 
 
 
-def letter_guess(wrd, guessed_letters, word_display, wrong_words, counter, right_counter, wrong_counter, player_guess):  # User is asked to guess a letter.
+def letter_guess(wrd, guessed_letters, word_display, wrong_words, counter, right_counter, wrong_counter, player_guess): 
     print('---------------------------------')
-    for i in range(len(wrd)):
+    for i in range(len(wrd)): # used to create the word_display.
         if wrd[i].lower() == player_guess.lower():
             word_display[i] = wrd[i].lower()
 
-    if player_guess.lower() in guessed_letters:
+    if player_guess.lower() in guessed_letters: # used to make sure player does not pick the same letter.
         print('You have already guessed this letter!')
         print(word_display)
         print(f'Your wrong guesses are {wrong_words}')
         print(f'You have guessed {counter} time(s). With {right_counter} right guesses and {wrong_counter} wrong guesses.')
 
-    elif player_guess.lower() in wrd.lower():
+    elif player_guess.lower() in wrd.lower(): # used for correct guess.
         guessed_letters.append(player_guess.lower())
         print('You guessed correctly! ')
         print(word_display)
         print(f'You have guessed {counter} time(s). With {right_counter} right guesses and {wrong_counter} wrong guesses.')
 
-    else:
-        guessed_letters.append(player_guess.lower())
+    else: # used for incorrect guess.
+        guessed_letters.append(player_guess.lower()) 
         wrong_words.append(player_guess)
         print(f'Sorry, {player_guess} is not in the word.')
         print(word_display)
@@ -65,7 +65,7 @@ def letter_guess(wrd, guessed_letters, word_display, wrong_words, counter, right
     print('---------------------------------')
     return word_display
 
-def game_end():
+def game_end(): # used to continue or end the game.
     user_input = input('Would you like to play again? (y/n): ')
 
     if user_input.lower() in ['y', 'yes']:
@@ -91,12 +91,12 @@ def main_play():  # combine functions into one main gameplay.
     word_display = ['-'] * len(word)
     wrong_words = []
     counter = 1
-    right_counter = 0
+    right_counter = 0  # keep track of the number of correct and incorrect answers.
     wrong_counter = 0
-    i = 1
+    i = 1  # print the gallows in the proper position.
 
     while True:
-        player_guess = input('Please guess a letter: ')
+        player_guess = input('Please guess a letter: ') # User is asked to guess a letter.
         if player_guess.lower() not in word.lower():
             print(gallows[i])
             i += 1
