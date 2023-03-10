@@ -4,60 +4,24 @@ import random
 word_bank = ['Brigham', 'Young', 'University',
              'Aliens', 'Upsidedown', 'Baseball',
              'Georgia', 'Easy', 'Ten', 'Baseball']
-HANGMAN = ['''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''']
+gallows = ["  ,---<\n  |   |\n      |\n      |\n      |\n      |\n<=========>",
+
+        "  ,---<\n  |   |\n  0   |\n      |\n      |\n      |\n<=========>",
+
+        "  ,---<\n  |   |\n  0   |\n  |   |\n      |\n      |\n<=========>",
+
+        "  ,---<\n  |   |\n  0   |\n /|   |\n      |\n      |\n<=========>",
+
+        "  ,---<\n  |   |\n  0   |\n /|\  |\n      |\n      |\n<=========>",
+
+        "  ,---<\n  |   |\n  0   |\n /|\  |\n /    |\n      |\n<=========>",
+
+        "  ,---<\n  |   |\n  0   |\n /|\  |\n / \  |\n      |\n<=========>"]
 
 
 def greeting():  # Greet the user welcoming them to the game.
     print('Hello player! Welcome to Hangman.')
+    print(gallows[0])
     print('---------------------------------')
 
 
@@ -134,9 +98,9 @@ def main_play():  # combine functions into one main gameplay.
     while True:
         player_guess = input('Please guess a letter: ')
         if player_guess.lower() not in word.lower():
-            print(HANGMAN[i])
+            print(gallows[i])
             i += 1
-            if i >= len(HANGMAN):
+            if i >= len(gallows):
                 print(f'You took too many guesses. GAME OVER.')
                 break
         if player_guess.lower() in word.lower():
@@ -154,8 +118,6 @@ def main_play():  # combine functions into one main gameplay.
 
 
 main_play()
-
-
 
 
 
