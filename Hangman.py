@@ -113,8 +113,7 @@ def main_play():  # combine functions into one main gameplay.
 
         if set(guessed_letters) == set(word.lower()):
             print(f'Congratulations, you guessed the word! It took you {counter} guesses.')
-            break
-    game_end()
+            game_end()
 
 
 main_play()
