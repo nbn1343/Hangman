@@ -3,7 +3,7 @@ import random
 
 word_bank = ['Brigham', 'Young', 'University',
              'Aliens', 'Upsidedown', 'Baseball',
-             'Georgia', 'Easy', 'Ten', 'Baseball']
+             'Georgia', 'Easy', 'Ten', 'Jumbo']
 gallows = ["  ,---<\n  |   |\n      |\n      |\n      |\n      |\n<=========>",
 
         "  ,---<\n  |   |\n  0   |\n      |\n      |\n      |\n<=========>",
